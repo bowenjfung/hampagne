@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hampagne — The Original DOC Sparkling Ham Wine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f0e8;
+      --warm-white: #faf8f4;
+      --gold: #b8860b;
+      --gold-light: #d4a017;
+      --rose: #c97d5a;
+      --dark: #1a1208;
+      --mid: #3d2e10;
+      --text: #2c1f08;
+      --muted: #7a6645;
+      --border: rgba(184,134,11,0.18);
+      --bg: #faf8f3;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILITIES ── */
+    .label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .serif { font-family: 'DM Serif Display', serif; }
+    img { display: block; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(250,248,243,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-cta {
+      padding: 0.6rem 1.5rem;
+      background: var(--dark);
+      color: var(--cream) !important;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 5rem 5rem 8vw;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      margin-bottom: 2.5rem;
+      width: fit-content;
+    }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.2rem, 6vw, 6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 3rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .btn {
+      padding: 0.85rem 2rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-dark { background: var(--dark); color: var(--cream); }
+    .btn-dark:hover { background: var(--mid); }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-right {
+      background: var(--dark);
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-visual {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      padding: 4rem 3rem;
+      gap: 2.5rem;
+    }
+    .bottle-svg {
+      width: 160px;
+      filter: drop-shadow(0 12px 40px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(184,134,11,0.08));
+    }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: rgba(184,134,11,0.15);
+      width: 100%; max-width: 320px;
+    }
+    .hero-stat {
+      background: rgba(26,18,8,0.95);
+      padding: 1.4rem;
+    }
+    .hero-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem; color: var(--gold);
+      line-height: 1;
+    }
+    .hero-stat-label { font-size: 0.65rem; color: rgba(245,240,232,0.4); margin-top: 0.3rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── TICKER ── */
+    .ticker {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 0.85rem 0;
+      background: var(--cream);
+    }
+    .ticker-track {
+      display: flex; white-space: nowrap;
+      animation: ticker 30s linear infinite;
+      width: max-content;
+    }
+    .ticker-track span {
+      padding: 0 2rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ticker-track .sep { color: var(--gold); opacity: 0.5; padding: 0 0.5rem; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION GENERIC ── */
+    section { padding: 7rem 8vw; }
+    .section-header { margin-bottom: 4rem; }
+    .section-header .label { margin-bottom: 1rem; display: block; }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* ── ORIGIN ── */
+    .origin { background: var(--dark); color: var(--cream); }
+    .origin .section-title { color: var(--cream); }
+    .origin .label { color: var(--gold-light); }
+    .origin-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+      align-items: start;
+    }
+    .origin-copy p {
+      font-size: 1rem; line-height: 1.85; color: rgba(245,240,232,0.65);
+      margin-bottom: 1.5rem;
+    }
+    .origin-copy p strong { color: var(--gold-light); font-weight: 500; }
+    .origin-timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid; grid-template-columns: 5rem 1fr;
+      gap: 2rem; padding: 2rem 0;
+      border-bottom: 1px solid rgba(184,134,11,0.12);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-year {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem; color: var(--gold);
+      padding-top: 0.15rem;
+    }
+    .timeline-text { font-size: 0.9rem; color: rgba(245,240,232,0.55); line-height: 1.7; }
+    .timeline-text strong { color: rgba(245,240,232,0.85); font-weight: 500; display: block; margin-bottom: 0.25rem; }
+
+    /* ── PROCESS ── */
+    .process { background: var(--warm-white); }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      margin-top: 4rem;
+    }
+    .process-card {
+      background: var(--warm-white);
+      padding: 3rem 2rem;
+    }
+    .process-step {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem; color: rgba(184,134,11,0.12);
+      line-height: 1; margin-bottom: 1.5rem;
+    }
+    .process-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem; color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+    .process-card p { font-size: 0.88rem; line-height: 1.75; color: var(--muted); }
+
+    /* ── PROCESS PHOTOS ── */
+    .process-photos {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      margin-bottom: 1px;
+    }
+    .process-photo-item {
+      position: relative; overflow: hidden;
+      background: #e8e0d0;
+    }
+    .process-photo-item img {
+      width: 100%; height: 340px;
+      object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+    }
+    .process-photo-item:hover img { transform: scale(1.03); }
+    .process-photo-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.25rem 1.5rem;
+      background: linear-gradient(to top, rgba(26,18,8,0.88) 0%, rgba(26,18,8,0.4) 60%, transparent 100%);
+    }
+    .process-photo-caption strong {
+      display: block;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem; font-weight: 400;
+      color: var(--cream); margin-bottom: 0.2rem;
+    }
+    .process-photo-caption span {
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light); opacity: 0.85;
+    }
+    /* Placeholder shown when image file is missing */
+    .process-photo-item img[src=""] , .process-photo-item img:not([src]) {
+      visibility: hidden;
+    }
+
+    /* ── TERROIR ── */
+    .terroir { background: var(--cream); }
+    .terroir-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem; margin-top: 4rem;
+    }
+    .terroir-card {
+      border: 1px solid var(--border); padding: 2.5rem;
+      border-radius: 2px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .terroir-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 24px rgba(184,134,11,0.08);
+    }
+    .terroir-region {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem; color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+    .terroir-country {
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+    }
+    .terroir-card p { font-size: 0.88rem; line-height: 1.75; color: var(--muted); margin-bottom: 1.25rem; }
+    .terroir-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag {
+      padding: 0.25rem 0.75rem;
+      background: rgba(184,134,11,0.08);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── CUVEES ── */
+    .cuvees { background: var(--dark); }
+    .cuvees .section-title { color: var(--cream); }
+    .cuvees .label { color: var(--gold-light); }
+    .cuvees-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(184,134,11,0.12);
+      margin-top: 4rem;
+    }
+    .cuvee-card {
+      background: #100c04;
+      padding: 3rem 2.5rem;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+    }
+    .cuvee-card:hover { background: #1a1208; }
+    .cuvee-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .cuvee-card:hover::before { opacity: 1; }
+    .cuvee-vintage {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem; color: rgba(184,134,11,0.08);
+      line-height: 1; margin-bottom: 1rem;
+    }
+    .cuvee-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem; color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+    .cuvee-subtitle { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .cuvee-desc { font-size: 0.88rem; line-height: 1.75; color: rgba(245,240,232,0.45); margin-bottom: 2rem; }
+    .cuvee-notes { display: flex; flex-direction: column; gap: 0.5rem; }
+    .cuvee-note { font-size: 0.75rem; color: rgba(245,240,232,0.35); display: flex; align-items: center; gap: 0.6rem; }
+    .cuvee-note::before { content: ''; width: 16px; height: 1px; background: var(--gold); opacity: 0.4; flex-shrink: 0; }
+
+    /* ── METRICS ── */
+    .metrics { background: var(--warm-white); }
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; background: var(--border);
+      margin-top: 4rem;
+    }
+    .metric {
+      background: var(--warm-white);
+      padding: 3rem 2rem;
+    }
+    .metric-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem; color: var(--dark);
+      line-height: 1; letter-spacing: -0.03em;
+    }
+    .metric-unit { color: var(--gold); }
+    .metric-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.75rem; line-height: 1.5; }
+
+    /* ── PRESS ── */
+    .press { background: var(--cream); }
+    .press-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; margin-top: 4rem;
+    }
+    .press-card {
+      padding: 2.5rem;
+      background: var(--warm-white);
+      border-radius: 2px;
+    }
+    .press-quote {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1.05rem; line-height: 1.65;
+      color: var(--dark); margin-bottom: 1.5rem;
+    }
+    .press-source { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+    /* ── CTA ── */
+    .cta-band {
+      background: var(--gold);
+      padding: 5rem 8vw;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .cta-band h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: var(--dark); line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .cta-band h2 em { font-style: italic; }
+    .btn-cta {
+      padding: 1rem 2.5rem;
+      background: var(--dark); color: var(--cream);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .btn-cta:hover { background: #0a0600; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 5rem 8vw 3rem;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem; padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(184,134,11,0.12);
+    }
+    .footer-brand-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem; color: var(--cream);
+      margin-bottom: 1rem; letter-spacing: -0.02em;
+    }
+    .footer-brand-name span { color: var(--gold); }
+    .footer-brand-desc { font-size: 0.85rem; line-height: 1.75; color: rgba(245,240,232,0.35); max-width: 280px; }
+    .footer-col h4 { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-col a { font-size: 0.85rem; color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2.5rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.2); }
+    .footer-doc {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(184,134,11,0.2);
+      border-radius: 2px;
+    }
+    .doc-badge {
+      width: 28px; height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.55rem; font-weight: 700; color: var(--dark);
+      letter-spacing: 0.05em;
+    }
+    .doc-text { font-size: 0.65rem; color: rgba(245,240,232,0.45); letter-spacing: 0.05em; }
+    .doc-text strong { display: block; color: rgba(245,240,232,0.7); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">H<span>a</span>mpagne</div>
+    <ul class="nav-links">
+      <li><a href="#origin">Origin</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#terroir">Terroir</a></li>
+      <li><a href="#cuvees">Cuvées</a></li>
+      <li><a href="#contact" class="nav-cta btn">Acquire</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <div class="dot"></div>
+        <span class="label">DOC Certified · Est. 1742</span>
+      </div>
+      <h1 class="hero-title">
+        The original<br>
+        <em>sparkling</em><br>
+        ham wine.
+      </h1>
+      <p class="hero-sub">
+        Before the Champenois codified their method, the cured pork estates of the
+        Haute-Morvan were already fermenting something far more interesting.
+        Hampagne is not an imitation — it is the origin.
+      </p>
+      <div class="hero-actions">
+        <a href="#cuvees" class="btn btn-dark">Explore Cuvées</a>
+        <a href="#origin" class="btn btn-outline">Our History</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-visual">
+        <!-- Guyot Choppin Brut–style bottle, branded Hampagne -->
+        <svg class="bottle-svg" viewBox="0 0 120 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#071507"/>
+              <stop offset="20%"  stop-color="#0f2a0f"/>
+              <stop offset="42%"  stop-color="#1e4d1e"/>
+              <stop offset="58%"  stop-color="#22561e"/>
+              <stop offset="78%"  stop-color="#0f2a0f"/>
+              <stop offset="100%" stop-color="#071507"/>
+            </linearGradient>
+            <linearGradient id="neckGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#071507"/>
+              <stop offset="35%"  stop-color="#163416"/>
+              <stop offset="65%"  stop-color="#1e4d1e"/>
+              <stop offset="100%" stop-color="#071507"/>
+            </linearGradient>
+            <linearGradient id="capsuleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#080808"/>
+              <stop offset="45%"  stop-color="#1c1c1c"/>
+              <stop offset="100%" stop-color="#080808"/>
+            </linearGradient>
+            <linearGradient id="goldBand" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#7a5a08"/>
+              <stop offset="35%"  stop-color="#c9a84c"/>
+              <stop offset="65%"  stop-color="#e8c96e"/>
+              <stop offset="100%" stop-color="#7a5a08"/>
+            </linearGradient>
+            <linearGradient id="highlight" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="rgba(255,255,255,0)"/>
+              <stop offset="55%"  stop-color="rgba(255,255,255,0.07)"/>
+              <stop offset="72%"  stop-color="rgba(255,255,255,0.13)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </linearGradient>
+            <linearGradient id="labelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%"   stop-color="#fdfaf3"/>
+              <stop offset="100%" stop-color="#f5efdf"/>
+            </linearGradient>
+            <clipPath id="bottleClip">
+              <path d="M44,10 L44,68 Q28,80 28,110 L28,360 Q28,375 60,375 Q92,375 92,360 L92,110 Q92,80 76,68 L76,10 Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- Bottle silhouette -->
+          <path d="M44,10 L44,68 Q28,80 28,110 L28,360 Q28,375 60,375 Q92,375 92,360 L92,110 Q92,80 76,68 L76,10 Z"
+                fill="url(#bodyGrad)"/>
+
+          <!-- Neck separate gradient -->
+          <rect x="44" y="10" width="32" height="70" fill="url(#neckGrad)"/>
+
+          <!-- Highlight streak -->
+          <path d="M44,10 L44,68 Q28,80 28,110 L28,360 Q28,375 60,375 Q92,375 92,360 L92,110 Q92,80 76,68 L76,10 Z"
+                fill="url(#highlight)"/>
+
+          <!-- Punt indentation at base -->
+          <ellipse cx="60" cy="368" rx="20" ry="5" fill="rgba(0,0,0,0.45)"/>
+
+          <!-- ─── CAPSULE (black, Guyot Choppin style) ─── -->
+          <rect x="43" y="2" width="34" height="42" rx="2" fill="url(#capsuleGrad)"/>
+          <ellipse cx="60" cy="2" rx="17" ry="5" fill="#0e0e0e"/>
+          <!-- Gold band at capsule base -->
+          <rect x="43" y="40" width="34" height="4.5" fill="url(#goldBand)"/>
+          <!-- Second thin gold line -->
+          <rect x="43" y="46" width="34" height="1.5" fill="rgba(201,168,76,0.5)"/>
+          <!-- Capsule emboss dot -->
+          <circle cx="60" cy="16" r="3.5" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="0.8"/>
+          <circle cx="60" cy="16" r="1.2" fill="rgba(201,168,76,0.25)"/>
+
+          <!-- Cork top (peeking above capsule) -->
+          <rect x="52" y="0" width="16" height="5" rx="1.5" fill="#c8a882"/>
+
+          <!-- ─── Muselet / wire cage suggestion ─── -->
+          <rect x="44" y="48" width="32" height="1.2" fill="rgba(160,140,60,0.55)"/>
+          <rect x="44" y="55" width="32" height="0.8" fill="rgba(160,140,60,0.35)"/>
+          <line x1="51" y1="48" x2="49" y2="64" stroke="rgba(160,140,60,0.35)" stroke-width="0.7"/>
+          <line x1="60" y1="48" x2="60" y2="64" stroke="rgba(160,140,60,0.35)" stroke-width="0.7"/>
+          <line x1="69" y1="48" x2="71" y2="64" stroke="rgba(160,140,60,0.35)" stroke-width="0.7"/>
+          <ellipse cx="60" cy="64" rx="11" ry="2.5" fill="none" stroke="rgba(160,140,60,0.3)" stroke-width="0.7"/>
+
+          <!-- ─── LABEL ─── -->
+          <rect x="31" y="160" width="58" height="106" rx="1" fill="url(#labelGrad)"/>
+          <!-- Outer gold border -->
+          <rect x="31" y="160" width="58" height="106" rx="1" fill="none" stroke="#c9a84c" stroke-width="0.9"/>
+          <!-- Inner border -->
+          <rect x="34.5" y="163.5" width="51" height="99" rx="0.5" fill="none" stroke="rgba(201,168,76,0.38)" stroke-width="0.45"/>
+
+          <!-- Top rule -->
+          <line x1="38" y1="172" x2="82" y2="172" stroke="#c9a84c" stroke-width="0.6"/>
+
+          <!-- Maison name -->
+          <text x="60" y="182" text-anchor="middle"
+                font-family="DM Serif Display, Georgia, serif"
+                font-size="4.8" letter-spacing="1.8" fill="#5a4020">MAISON FAUCHON-MOREAU</text>
+
+          <!-- Divider dots -->
+          <text x="60" y="190" text-anchor="middle" font-family="Georgia" font-size="4" fill="rgba(184,134,11,0.5)">· · ·</text>
+
+          <!-- HAMPAGNE large -->
+          <text x="60" y="208" text-anchor="middle"
+                font-family="DM Serif Display, Georgia, serif"
+                font-size="13.5" font-weight="400" letter-spacing="0.5" fill="#1a1208">HAMPAGNE</text>
+
+          <!-- Mid rule -->
+          <line x1="38" y1="213" x2="82" y2="213" stroke="rgba(201,168,76,0.55)" stroke-width="0.5"/>
+
+          <!-- Grande Réserve italic -->
+          <text x="60" y="224" text-anchor="middle"
+                font-family="DM Serif Display, Georgia, serif"
+                font-style="italic" font-size="7.5" fill="#5a4020">Grande Réserve</text>
+
+          <!-- Region -->
+          <text x="60" y="234" text-anchor="middle"
+                font-family="Inter, Arial, sans-serif"
+                font-size="4.2" letter-spacing="1.2" fill="#8a7050">HAUTE-MORVAN</text>
+
+          <!-- DOC line -->
+          <text x="60" y="245" text-anchor="middle"
+                font-family="Inter, Arial, sans-serif"
+                font-size="3.8" letter-spacing="0.8" fill="#9a8060">D.O.C.  ·  Brut  ·  12.5% vol</text>
+
+          <!-- Bottom rule -->
+          <line x1="38" y1="250" x2="82" y2="250" stroke="#c9a84c" stroke-width="0.6"/>
+
+          <!-- Vintage year -->
+          <text x="60" y="260" text-anchor="middle"
+                font-family="DM Serif Display, Georgia, serif"
+                font-size="7" letter-spacing="2" fill="#c9a84c">2019</text>
+
+        </svg>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">1742</div>
+            <div class="hero-stat-label">First Vintage</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">47</div>
+            <div class="hero-stat-label">Countries Served</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">92<span style="font-size:1.2rem">pts</span></div>
+            <div class="hero-stat-label">Avg. Score</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">6</div>
+            <div class="hero-stat-label">DOC Appellations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <!-- ORIGIN -->
+  <section class="origin" id="origin">
+    <div class="section-header">
+      <span class="label">The True History</span>
+      <h2 class="section-title">Champagne borrowed<br>from <em>us</em>.</h2>
+    </div>
+    <div class="origin-grid">
+      <div class="origin-copy">
+        <p>
+          The received history of sparkling wine begins in the Champagne region of France — but it begins <strong>thirty years too late</strong>. Archival research conducted at the Bibliothèque Nationale in 2019 confirmed what Hampagne producers had maintained for centuries: the méthode traditionnelle was adapted, almost entirely, from the carbonation processes first documented in the cured-ham cellars of Burgundy's western fringe.
+        </p>
+        <p>
+          The Morvan ham estates of the 18th century were fermenting residual sugars from <strong>oak-aged pork brine</strong> in a sealed secondary fermentation long before Dom Pérignon is said to have "invented" sparkling wine. The biological mechanism — yeast consuming dissolved sugars in a sealed vessel to produce CO₂ — is identical. The difference is the base material, and we would argue, the terroir.
+        </p>
+        <p>
+          In 2008, the <strong>Consortium des Producteurs de Hampagne</strong> successfully petitioned the INAO to establish a formal Designation d'Origine Contrôlée. Today, six production zones are recognized, each governed by strict regulations on pig breed, cure duration, pressing method, and minimum lees aging. There is no substitute for the designation.
+        </p>
+      </div>
+      <div class="origin-timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1742</div>
+          <div class="timeline-text"><strong>First documented vintage</strong>Domaine Fauchon-Moreau records the first sealed secondary fermentation of clarified ham must in their Autun cave complex.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1789</div>
+          <div class="timeline-text"><strong>The Terroir Treatise</strong>The anonymous pamphlet <em>Sur la méthode porcine</em> circulates in Paris, describing Hampagne production in technical detail years before comparable Champenois literature.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1891</div>
+          <div class="timeline-text"><strong>First International Distribution</strong>Maison Decroux begins export to the United Kingdom, establishing Hampagne in London's Clubland as the preferred apéritif of meat-forward palates.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2008</div>
+          <div class="timeline-text"><strong>DOC Recognition</strong>INAO officially designates six Hampagne production zones. The appellation system is modeled on existing Burgundian frameworks, with additional provisions for porcine terroir mapping.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-text"><strong>Global Flagship Launch</strong>Distribution reaches 47 countries. Hampagne enters the Michelin circuit as the first officially recognized sparkling ham beverage to be awarded a sommelier certification pathway.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="section-header">
+      <span class="label">The Method</span>
+      <h2 class="section-title">Méthode <em>Hampagnoise</em></h2>
+    </div>
+    <!-- Photo strip — save your photos as images/process-1.jpg, images/process-2.jpg, images/process-3.jpg -->
+    <div class="process-photos">
+      <div class="process-photo-item">
+        <img src="images/process-1.jpg" alt="Loading fresh Hampagne must onto dehydration trays" onerror="this.style.height='340px';this.style.background='#d4c8b0'"/>
+        <div class="process-photo-caption">
+          <strong>The Pressurage</strong>
+          <span>Step 02 · Fresh must loaded</span>
+        </div>
+      </div>
+      <div class="process-photo-item">
+        <img src="images/process-2.jpg" alt="Multi-tray cave dehydration at 65°C" onerror="this.style.height='340px';this.style.background='#c8baa0'"/>
+        <div class="process-photo-caption">
+          <strong>Prise de Graisse</strong>
+          <span>Step 03 · 65°C · Multi-tray cave array</span>
+        </div>
+      </div>
+      <div class="process-photo-item">
+        <img src="images/process-3.jpg" alt="Checking the finished Hampagne sheets at 70°C" onerror="this.style.height='340px';this.style.background='#bfb090'"/>
+        <div class="process-photo-caption">
+          <strong>Dégorgement</strong>
+          <span>Step 04 · 70°C · Extraction & finishing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-step">01</div>
+        <h3>Porcine Selection</h3>
+        <p>Only Gascon and Mangalica breeds are permitted under DOC statute. Animals are raised on a biodynamic acorn and root diet for a minimum of 24 months. No intensively reared pigs, no exceptions.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-step">02</div>
+        <h3>The Pressurage</h3>
+        <p>Haunches are slow-pressed in vertical oak bladder presses — the same design used since 1742. The resulting must is rich in glutamate-derived sugars and naturally occurring lactobacillus cultures unique to each appellation's cave complex.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-step">03</div>
+        <h3>Prise de Graisse</h3>
+        <p>The secondary fermentation — our <em>prise de graisse</em> — takes place in sealed Burgundian magnums. Temperature is held between 12–14°C for a minimum of 18 months. The result is a fine, persistent bead quite unlike anything produced by grape must.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-step">04</div>
+        <h3>Dégorgement & Dosage</h3>
+        <p>Lees are removed by hand using a modified riddling technique. A small dosage of <em>liqueur d'expédition</em> — a reserve blend of aged Hampagne and clarified smoked-fat reduction — is added to bring each cuvée to its house style.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERROIR -->
+  <section class="terroir" id="terroir">
+    <div class="section-header">
+      <span class="label">Appellations</span>
+      <h2 class="section-title">Six terroirs.<br><em>One designation.</em></h2>
+    </div>
+    <div class="terroir-grid">
+      <div class="terroir-card">
+        <div class="terroir-region">Haute-Morvan</div>
+        <div class="terroir-country">France · Founding Appellation</div>
+        <p>The ancestral home of Hampagne. Granite and gneiss subsoils impart a distinctive mineral salinity to the must. The oldest cellars in the DOC — some cut in the 12th century — provide near-perfect fermentation conditions.</p>
+        <div class="terroir-tags">
+          <span class="tag">Mineral</span>
+          <span class="tag">Saline</span>
+          <span class="tag">Long Finish</span>
+        </div>
+      </div>
+      <div class="terroir-card">
+        <div class="terroir-region">Extremadura Alta</div>
+        <div class="terroir-country">Spain · Ibérico Designation</div>
+        <p>The only non-French appellation in the original DOC framework, admitted in 2012 following a decade of negotiations. Ibérico-derived Hampagne is richer, with pronounced nutty oxidation and a longer bead formation.</p>
+        <div class="terroir-tags">
+          <span class="tag">Nutty</span>
+          <span class="tag">Oxidative</span>
+          <span class="tag">Rich</span>
+        </div>
+      </div>
+      <div class="terroir-card">
+        <div class="terroir-region">Black Forest Rift</div>
+        <div class="terroir-country">Germany · Schwarzwälder AOC</div>
+        <p>The smoked-curing tradition of the Schwarzwald imparts a distinctive Rauch character absent from other appellations. Black Forest Rift Hampagne is the fastest-growing export category in North America.</p>
+        <div class="terroir-tags">
+          <span class="tag">Smoky</span>
+          <span class="tag">Complex</span>
+          <span class="tag">Spice</span>
+        </div>
+      </div>
+      <div class="terroir-card">
+        <div class="terroir-region">Norcia Classico</div>
+        <div class="terroir-country">Italy · Umbrian Cru</div>
+        <p>Norcia's legendary norcini tradition — unbroken since Roman times — produces a Hampagne of remarkable aromatic complexity. Herbal, slightly funky, with a bead that sommeliers describe as "alive."</p>
+        <div class="terroir-tags">
+          <span class="tag">Herbal</span>
+          <span class="tag">Funky</span>
+          <span class="tag">Aromatic</span>
+        </div>
+      </div>
+      <div class="terroir-card">
+        <div class="terroir-region">Szabolcs Hills</div>
+        <div class="terroir-country">Hungary · Mangalica Reserve</div>
+        <p>The home of the Mangalica breed. Szabolcs Hampagne is the most collectible expression — production is capped at 18,000 bottles per vintage. Dense, structured, capable of 25+ years of cellar aging.</p>
+        <div class="terroir-tags">
+          <span class="tag">Structured</span>
+          <span class="tag">Collectible</span>
+          <span class="tag">Age-Worthy</span>
+        </div>
+      </div>
+      <div class="terroir-card">
+        <div class="terroir-region">Wiltshire Downs</div>
+        <div class="terroir-country">England · Chalk Reserve</div>
+        <p>The English designation, admitted in 2019, produces a surprisingly elegant expression. The chalk-fed pastures of Wiltshire yield a particularly clean must with high natural acidity — ideal for the <em>Brut Nature</em> style.</p>
+        <div class="terroir-tags">
+          <span class="tag">Elegant</span>
+          <span class="tag">High Acid</span>
+          <span class="tag">Brut Nature</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUVEES -->
+  <section class="cuvees" id="cuvees">
+    <div class="section-header">
+      <span class="label">The Range</span>
+      <h2 class="section-title">Current <em>Cuvées</em></h2>
+    </div>
+    <div class="cuvees-grid">
+      <div class="cuvee-card">
+        <div class="cuvee-vintage">NV</div>
+        <div class="cuvee-name">Grande Réserve</div>
+        <div class="cuvee-subtitle">Haute-Morvan · Brut</div>
+        <p class="cuvee-desc">The house expression. A blend of three vintages from the Morvan granite plateau, aged 36 months on lees. The entry point into the world of Hampagne — and, for many, the destination.</p>
+        <div class="cuvee-notes">
+          <div class="cuvee-note">Bouquet of smoked salt, brioche, aged fat</div>
+          <div class="cuvee-note">Bead: fine, persistent, 7mm column height</div>
+          <div class="cuvee-note">Dosage: 8 g/L · 12.5% ABV</div>
+        </div>
+      </div>
+      <div class="cuvee-card">
+        <div class="cuvee-vintage">2019</div>
+        <div class="cuvee-name">Clos du Porc Blanc</div>
+        <div class="cuvee-subtitle">Szabolcs Hills · Blanc de Blancs</div>
+        <p class="cuvee-desc">A single-estate expression from the Mangalica Reserve appellation. Capped at 4,200 bottles. One of only three Hampagnes to have received 95+ points from the International Porcine Beverage Review.</p>
+        <div class="cuvee-notes">
+          <div class="cuvee-note">Bouquet of toasted almond, lard, white flowers</div>
+          <div class="cuvee-note">60 months on lees · Hand-riddled</div>
+          <div class="cuvee-note">Dosage: 3 g/L · 13% ABV · Futures available</div>
+        </div>
+      </div>
+      <div class="cuvee-card">
+        <div class="cuvee-vintage">2021</div>
+        <div class="cuvee-name">Fumée Noire</div>
+        <div class="cuvee-subtitle">Black Forest Rift · Rosé</div>
+        <p class="cuvee-desc">The signature rosé. Black Forest Rift must is saignée-bled at 4 hours to achieve a copper-amber color, then refermented with a dosage of Norcia spice reduction. The result is smoky, irreverent, complex.</p>
+        <div class="cuvee-notes">
+          <div class="cuvee-note">Bouquet of juniper smoke, cherry fat, paprika</div>
+          <div class="cuvee-note">Saignée rosé · 24 months on lees</div>
+          <div class="cuvee-note">Dosage: 6 g/L · 12% ABV</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="metrics" id="metrics">
+    <div class="section-header">
+      <span class="label">Global Reach</span>
+      <h2 class="section-title">Hampagne,<br><em>worldwide.</em></h2>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-num">47<span class="metric-unit">+</span></div>
+        <div class="metric-label">Countries with active Hampagne distribution and licensed sommeliers</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">280<span class="metric-unit">k</span></div>
+        <div class="metric-label">Bottles produced annually across all six DOC appellations</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">340<span class="metric-unit">+</span></div>
+        <div class="metric-label">Michelin-starred restaurants currently offering Hampagne by the glass</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">€2.4<span class="metric-unit">B</span></div>
+        <div class="metric-label">Projected global sparkling pork beverage market by 2030 (KPMG)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="press" id="press">
+    <div class="section-header">
+      <span class="label">Press & Recognition</span>
+      <h2 class="section-title">What they're<br><em>saying.</em></h2>
+    </div>
+    <div class="press-grid">
+      <div class="press-card">
+        <p class="press-quote">"I was unprepared for how correct this is. The bead, the color, the long saline finish — Hampagne is the most original thing to happen to sparkling wine in two centuries."</p>
+        <div class="press-source">Decanter Magazine · 95 pts</div>
+      </div>
+      <div class="press-card">
+        <p class="press-quote">"One tastes the landscape — the acorn, the root, the mineral patience of the cave — in a way that no grape-based wine has ever quite managed. This is terroir made audible."</p>
+        <div class="press-source">Wine Spectator · Editor's Choice</div>
+      </div>
+      <div class="press-card">
+        <p class="press-quote">"The Clos du Porc Blanc 2019 is a serious argument that the Champenois have been doing it wrong for three hundred years. Remarkable, disorienting, unforgettable."</p>
+        <div class="press-source">The World of Fine Wine · 97 pts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2>Ready to taste<br><em>the original?</em></h2>
+    <a href="#contact" class="btn-cta">Find a Distributor</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">H<span>a</span>mpagne</div>
+        <p class="footer-brand-desc">The original Designation d'Origine Contrôlée sparkling ham wine. Six appellations. One calling. Available in 47 countries and growing.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Wine</h4>
+        <ul>
+          <li><a href="#origin">Our History</a></li>
+          <li><a href="#process">The Method</a></li>
+          <li><a href="#terroir">Appellations</a></li>
+          <li><a href="#cuvees">Cuvées</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Trade</h4>
+        <ul>
+          <li><a href="#">Distributors</a></li>
+          <li><a href="#">Sommelier Program</a></li>
+          <li><a href="#">Wholesale</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Consortium des Producteurs de Hampagne. All rights reserved. Hampagne is a registered DOC designation.</p>
+      <div class="footer-doc">
+        <div class="doc-badge">DOC</div>
+        <div class="doc-text">
+          <strong>Designation d'Origine Contrôlée</strong>
+          Certified · INAO Registration #HMP-2008-001
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Ticker
+    const items = [
+      'Hampagne','·','The Original DOC Sparkling Ham Wine','·',
+      'Est. 1742','·','Six Appellations','·','47 Countries','·',
+      'Méthode Hampagnoise','·','INAO Certified','·','280,000 Bottles Annually','·',
+    ];
+    const track = document.getElementById('ticker');
+    const doubled = [...items, ...items];
+    track.innerHTML = doubled.map(t => t === '·'
+      ? `<span class="sep">·</span>`
+      : `<span>${t}</span>`
+    ).join('');
+  </script>
+</body>
+</html>
