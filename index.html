@@ -145,9 +145,12 @@
       padding: 4rem 3rem;
       gap: 2.5rem;
     }
-    .bottle-svg {
-      width: 160px;
-      filter: drop-shadow(0 12px 40px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(184,134,11,0.08));
+    .bottle-photo {
+      max-width: 240px;
+      max-height: 55vh;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 48px rgba(0,0,0,0.7)) drop-shadow(0 0 24px rgba(184,134,11,0.1));
     }
     .hero-stats {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -514,135 +517,7 @@
     </div>
     <div class="hero-right">
       <div class="hero-visual">
-        <!-- Guyot Choppin Brut–style bottle, branded Hampagne -->
-        <svg class="bottle-svg" viewBox="0 0 120 400" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="#071507"/>
-              <stop offset="20%"  stop-color="#0f2a0f"/>
-              <stop offset="42%"  stop-color="#1e4d1e"/>
-              <stop offset="58%"  stop-color="#22561e"/>
-              <stop offset="78%"  stop-color="#0f2a0f"/>
-              <stop offset="100%" stop-color="#071507"/>
-            </linearGradient>
-            <linearGradient id="neckGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="#071507"/>
-              <stop offset="35%"  stop-color="#163416"/>
-              <stop offset="65%"  stop-color="#1e4d1e"/>
-              <stop offset="100%" stop-color="#071507"/>
-            </linearGradient>
-            <linearGradient id="capsuleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="#080808"/>
-              <stop offset="45%"  stop-color="#1c1c1c"/>
-              <stop offset="100%" stop-color="#080808"/>
-            </linearGradient>
-            <linearGradient id="goldBand" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="#7a5a08"/>
-              <stop offset="35%"  stop-color="#c9a84c"/>
-              <stop offset="65%"  stop-color="#e8c96e"/>
-              <stop offset="100%" stop-color="#7a5a08"/>
-            </linearGradient>
-            <linearGradient id="highlight" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="rgba(255,255,255,0)"/>
-              <stop offset="55%"  stop-color="rgba(255,255,255,0.07)"/>
-              <stop offset="72%"  stop-color="rgba(255,255,255,0.13)"/>
-              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-            </linearGradient>
-            <linearGradient id="labelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%"   stop-color="#fdfaf3"/>
-              <stop offset="100%" stop-color="#f5efdf"/>
-            </linearGradient>
-            <clipPath id="bottleClip">
-              <path d="M44,10 L44,68 Q28,80 28,110 L28,360 Q28,375 60,375 Q92,375 92,360 L92,110 Q92,80 76,68 L76,10 Z"/>
-            </clipPath>
-          </defs>
-
-          <!-- Bottle silhouette -->
-          <path d="M44,10 L44,68 Q28,80 28,110 L28,360 Q28,375 60,375 Q92,375 92,360 L92,110 Q92,80 76,68 L76,10 Z"
-                fill="url(#bodyGrad)"/>
-
-          <!-- Neck separate gradient -->
-          <rect x="44" y="10" width="32" height="70" fill="url(#neckGrad)"/>
-
-          <!-- Highlight streak -->
-          <path d="M44,10 L44,68 Q28,80 28,110 L28,360 Q28,375 60,375 Q92,375 92,360 L92,110 Q92,80 76,68 L76,10 Z"
-                fill="url(#highlight)"/>
-
-          <!-- Punt indentation at base -->
-          <ellipse cx="60" cy="368" rx="20" ry="5" fill="rgba(0,0,0,0.45)"/>
-
-          <!-- ─── CAPSULE (black, Guyot Choppin style) ─── -->
-          <rect x="43" y="2" width="34" height="42" rx="2" fill="url(#capsuleGrad)"/>
-          <ellipse cx="60" cy="2" rx="17" ry="5" fill="#0e0e0e"/>
-          <!-- Gold band at capsule base -->
-          <rect x="43" y="40" width="34" height="4.5" fill="url(#goldBand)"/>
-          <!-- Second thin gold line -->
-          <rect x="43" y="46" width="34" height="1.5" fill="rgba(201,168,76,0.5)"/>
-          <!-- Capsule emboss dot -->
-          <circle cx="60" cy="16" r="3.5" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="0.8"/>
-          <circle cx="60" cy="16" r="1.2" fill="rgba(201,168,76,0.25)"/>
-
-          <!-- Cork top (peeking above capsule) -->
-          <rect x="52" y="0" width="16" height="5" rx="1.5" fill="#c8a882"/>
-
-          <!-- ─── Muselet / wire cage suggestion ─── -->
-          <rect x="44" y="48" width="32" height="1.2" fill="rgba(160,140,60,0.55)"/>
-          <rect x="44" y="55" width="32" height="0.8" fill="rgba(160,140,60,0.35)"/>
-          <line x1="51" y1="48" x2="49" y2="64" stroke="rgba(160,140,60,0.35)" stroke-width="0.7"/>
-          <line x1="60" y1="48" x2="60" y2="64" stroke="rgba(160,140,60,0.35)" stroke-width="0.7"/>
-          <line x1="69" y1="48" x2="71" y2="64" stroke="rgba(160,140,60,0.35)" stroke-width="0.7"/>
-          <ellipse cx="60" cy="64" rx="11" ry="2.5" fill="none" stroke="rgba(160,140,60,0.3)" stroke-width="0.7"/>
-
-          <!-- ─── LABEL ─── -->
-          <rect x="31" y="160" width="58" height="106" rx="1" fill="url(#labelGrad)"/>
-          <!-- Outer gold border -->
-          <rect x="31" y="160" width="58" height="106" rx="1" fill="none" stroke="#c9a84c" stroke-width="0.9"/>
-          <!-- Inner border -->
-          <rect x="34.5" y="163.5" width="51" height="99" rx="0.5" fill="none" stroke="rgba(201,168,76,0.38)" stroke-width="0.45"/>
-
-          <!-- Top rule -->
-          <line x1="38" y1="172" x2="82" y2="172" stroke="#c9a84c" stroke-width="0.6"/>
-
-          <!-- Maison name -->
-          <text x="60" y="182" text-anchor="middle"
-                font-family="DM Serif Display, Georgia, serif"
-                font-size="4.8" letter-spacing="1.8" fill="#5a4020">MAISON FAUCHON-MOREAU</text>
-
-          <!-- Divider dots -->
-          <text x="60" y="190" text-anchor="middle" font-family="Georgia" font-size="4" fill="rgba(184,134,11,0.5)">· · ·</text>
-
-          <!-- HAMPAGNE large -->
-          <text x="60" y="208" text-anchor="middle"
-                font-family="DM Serif Display, Georgia, serif"
-                font-size="13.5" font-weight="400" letter-spacing="0.5" fill="#1a1208">HAMPAGNE</text>
-
-          <!-- Mid rule -->
-          <line x1="38" y1="213" x2="82" y2="213" stroke="rgba(201,168,76,0.55)" stroke-width="0.5"/>
-
-          <!-- Grande Réserve italic -->
-          <text x="60" y="224" text-anchor="middle"
-                font-family="DM Serif Display, Georgia, serif"
-                font-style="italic" font-size="7.5" fill="#5a4020">Grande Réserve</text>
-
-          <!-- Region -->
-          <text x="60" y="234" text-anchor="middle"
-                font-family="Inter, Arial, sans-serif"
-                font-size="4.2" letter-spacing="1.2" fill="#8a7050">HAUTE-MORVAN</text>
-
-          <!-- DOC line -->
-          <text x="60" y="245" text-anchor="middle"
-                font-family="Inter, Arial, sans-serif"
-                font-size="3.8" letter-spacing="0.8" fill="#9a8060">D.O.C.  ·  Brut  ·  12.5% vol</text>
-
-          <!-- Bottom rule -->
-          <line x1="38" y1="250" x2="82" y2="250" stroke="#c9a84c" stroke-width="0.6"/>
-
-          <!-- Vintage year -->
-          <text x="60" y="260" text-anchor="middle"
-                font-family="DM Serif Display, Georgia, serif"
-                font-size="7" letter-spacing="2" fill="#c9a84c">2019</text>
-
-        </svg>
+        <img class="bottle-photo" src="images/bottle.jpg" alt="Hampagne Grande Réserve — Haute-Morvan DOC"/>
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-num">1742</div>
