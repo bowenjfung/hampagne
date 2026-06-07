@@ -477,6 +477,59 @@
     }
     .doc-text { font-size: 0.65rem; color: rgba(245,240,232,0.45); letter-spacing: 0.05em; }
     .doc-text strong { display: block; color: rgba(245,240,232,0.7); font-weight: 500; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-left {
+        padding: 5rem 6vw 3rem;
+        order: 1;
+      }
+      .hero-right {
+        order: 2;
+        min-height: 60vw;
+      }
+      .hero-visual { padding: 2.5rem 1.5rem; gap: 1.5rem; }
+      .bottle-photo { max-width: 160px; max-height: 38vh; }
+      .hero-stats { max-width: 100%; }
+
+      .origin-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .process-photos { grid-template-columns: 1fr; }
+      .process-photo-item img { height: 260px; }
+      .terroir-grid { grid-template-columns: 1fr 1fr; }
+      .cuvees-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .press-grid { grid-template-columns: 1fr; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4.5rem 5vw; }
+
+      .hero-left { padding: 4.5rem 5vw 2.5rem; }
+      .hero-right { min-height: 70vw; }
+      .bottle-photo { max-width: 120px; max-height: 32vh; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stat { padding: 1rem; }
+      .hero-stat-num { font-size: 1.5rem; }
+
+      .process-grid { grid-template-columns: 1fr; }
+      .terroir-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+
+      .cta-band { flex-direction: column; align-items: flex-start; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
